@@ -12,18 +12,18 @@ public class Music {
 
     public Integer selection(Integer startIndex, String selection) {
 
-        Integer countForward = 1;
-        for (int x = startIndex; x < playList.length - x; x++) {
+        Integer countForward = 0;
+        for (int x = startIndex; x < playList.length; x++) {
             if (playList[x].equals(selection)) {
                 countForward = x - startIndex;
             } else if (!playList[x].equals(selection)) {
                 countForward++;
             }
         }
-            if (playList[playList.length -1] != selection &&  countForward == (playList.length - (startIndex))) {
+            if ((!playList[playList.length -1].equals(selection)) &&  (countForward == ((playList.length -1)- (startIndex)))) {
                 for (int i = 0; i < playList.length; i++) {
                     if (playList[i].equals(selection)) {
-                        countForward = countForward + i +1;
+                        countForward = countForward + i;
                     }
                 }
             }
@@ -36,17 +36,18 @@ public class Music {
                 countBack++;
             }
         }
-        if (playList[0] != selection &&  countBack == (startIndex +1)) {
+        if ((!playList[0].equals(selection)) &&  (countBack == (startIndex))) {
             for (int i = playList.length -1; i >= 0; i--) {
                 if (playList[i].equals(selection)) {
                     countBack = countBack + ((playList.length -1) - i);
                 }
             }
         }
+
         if (countBack > countForward) {
             return countForward;
         } else if (countBack < countForward) {
-            return countForward;
+            return countBack;
 
         } else if (countBack.equals(countForward)) {
             return countForward;
