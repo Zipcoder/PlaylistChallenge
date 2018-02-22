@@ -11,59 +11,42 @@ public class Music {
     }
 
     public Integer selection(Integer startIndex, String selection) {
-        Integer[] occurrenceIndex = selectionOccurrences(selection);
-        int lowestPushesPressDown = pressDown(startIndex, occurrenceIndex);
-        int lowestPushesPressUp = pressUp(startIndex, occurrenceIndex);
+        return pressCounts(startIndex, selection);
+      }
 
-        if (lowestPushesPressUp <= lowestPushesPressDown) {
-            return lowestPushesPressUp;
-        } else return lowestPushesPressDown;
+    public Integer pressCounts (Integer startIndex, String selection) {
+        int pressNext = pressForwards(startIndex, selection);
+        int pressPrevious = pressBackwards(startIndex ,selection);
+        if (pressNext > pressPrevious) {
+            return pressPrevious;
+        }
+        return pressNext;
+    }
+
+    public Integer pressForwards(Integer startIndex, String selection) {
+        int skipCount = 0;
+        int length = playList.length -1;
+        while (!playList[startIndex].equals(selection)) {
+            skipCount ++;
+            if (startIndex ==0) {
+                startIndex = length;
+            } else {
+                startIndex --;
+            }
+        } return skipCount;
     }
 
 
-    public Integer[] selectionOccurrences(String selection) {
-        Integer[] occurrenceIndex;
-        StringBuilder sb = new StringBuilder();
-
-        for (int i =0; i < playList.length; i++) {
-            if (playList[i].equals(selection)) {
-                sb.append(i + " ";
+    public int pressBackwards (Integer startIndex, String selection) {
+        int skipCount = 0;
+        int length = playList.length -1;
+        while (!playList[startIndex].equals(selection)) {
+            skipCount ++;
+            if (startIndex ==length) {
+                startIndex = 0;
+            } else {
+                startIndex ++;
             }
-        }
-        return occurrenceIndex;
-
-    }
-
-    public int pressUp (Integer startIndex, Integer[] occurrenceIndex) {
-        int lowestPushes = 0;
-        for (int i = 0; i <occurrenceIndex.length; i ++ ) {
-            if (occurrenceIndex[i] > startIndex) {
-                if (lowestPushes <= (occurrenceIndex[i] - startIndex)) {
-                    lowestPushes = (occurrenceIndex[i] - startIndex);
-                }
-            }
-            if (occurrenceIndex[i] < startIndex) {
-                if ((Math.abs(0 - occurrenceIndex[i])) + (playList.length - startIndex) < lowestPushes) {
-                    lowestPushes = occurrenceIndex[i] - startIndex;
-                }
-            }
-        }
-        return lowestPushes;
-    }
-    public int pressDown (Integer startIndex, Integer[] occurrenceIndex) {
-        int lowestPushes = 0;
-        for (int i = 0; i <occurrenceIndex.length; i ++ ) {
-            if (occurrenceIndex[i] > startIndex) {
-                if (lowestPushes <= (occurrenceIndex[i] - startIndex)) {
-                    lowestPushes = (occurrenceIndex[i] - startIndex);
-                }
-            }
-            if (occurrenceIndex[i] < startIndex) {
-                if ((Math.abs(0 - occurrenceIndex[i])) + (playList.length - startIndex) < lowestPushes) {
-                    lowestPushes = occurrenceIndex[i] - startIndex;
-                }
-            }
-        }
-        return lowestPushes;
+        } return skipCount;
     }
 }
