@@ -9,7 +9,7 @@
         <module name="PlaylistChallenge" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="PlaylistChallenge" target="1.5" />
     </bytecodeTargetLevel>
   </component>
