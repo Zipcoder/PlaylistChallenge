@@ -2,7 +2,7 @@ package io.zipcoder;
 
 import org.junit.Assert;
 import org.junit.Test;
-
+import java.util.Arrays;
 public class MusicTest {
 
     @Test
