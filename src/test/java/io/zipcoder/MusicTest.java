@@ -6,9 +6,9 @@ import org.junit.Test;
 public class MusicTest {
 
     @Test
-    public void selectionTest1(){
+    public void selectionTest1() {
 
-        String[] playlist = {"wheniseeyouagain","borntorun","nothingelsematters","cecelia"};
+        String[] playlist = {"wheniseeyouagain", "borntorun", "nothingelsematters", "cecelia"};
         Music music = new Music(playlist);
         Integer startingIndex = 1;
         String selection = "cecelia";
@@ -18,13 +18,35 @@ public class MusicTest {
     }
 
     @Test
-    public void selectionTest2(){
+    public void selectionTest2() {
 
-        String[] playlist = {"dancinginthedark","rio","liveoak","liveoak"};
+        String[] playlist = {"dancinginthedark", "rio", "liveoak", "liveoak"};
         Music music = new Music(playlist);
         Integer startingIndex = 0;
         String selection = "liveoak";
         Integer expected = 1;
+        Integer actual = music.selection(startingIndex, selection);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void selectionTest3() {
+        String[] playList = {"Changes", "I Will Always Love You", "Trap Queen", "Changes", "Can't Be Touched"};
+        Music music = new Music(playList);
+        Integer startingIndex = 1;
+        String selection = "Changes";
+        Integer expected = 1;
+        Integer actual = music.selection(startingIndex, selection);
+        Assert.assertEquals(expected, actual); }
+
+    @Test
+    public void selectionTest4()
+    {
+        String [] playList = {"Changes", "I Will Always Love You", "Trap Queen", "You Came To Do This", "I Miss You", "Changes"};
+        Music music = new Music(playList);
+        Integer startingIndex = 2;
+        String selection = "Changes";
+        Integer expected = 2;
         Integer actual = music.selection(startingIndex, selection);
         Assert.assertEquals(expected, actual);
     }
