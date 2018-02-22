@@ -27,7 +27,7 @@ public class Music {
                 }
             }
                 }
-            if (goForward > goBack) {
+            if (goForward > goBack && goBack != 0) {
                 return goBack;
             }else return goForward;
         }
