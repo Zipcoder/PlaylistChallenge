@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class MusicTest {
 
-    @Test
+   @Test
     public void selectionTest1(){
 
         String[] playlist = {"wheniseeyouagain","borntorun","nothingelsematters","cecelia"};
