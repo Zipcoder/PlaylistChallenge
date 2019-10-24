@@ -25,11 +25,7 @@ public class Music {
 
         int dist1 = Math.abs(selectionIndex - startIndex);
         int dist2 = startIndex + playList.length - selectionIndex;
-        if (dist1 > dist2) {
-            distance = dist2;
-        } else {
-            distance = dist1;
-        }
+        distance = Math.min(dist1, dist2);
         return distance;
     }
 }
