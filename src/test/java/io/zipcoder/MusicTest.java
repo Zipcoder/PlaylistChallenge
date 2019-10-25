@@ -51,7 +51,7 @@ public class MusicTest {
         Music music = new Music(playlist);
         Integer startingIndex = 1;
         String selection = "crazylittlethingcalledlove";
-        Integer expected = 4;
+        Integer expected = 3;
         Integer actual = music.selection(startingIndex, selection);
         Assert.assertEquals(expected, actual);
     }
@@ -59,13 +59,13 @@ public class MusicTest {
 
     //test to wrap around the top of the array
     @Test
-    public void selectionTes5() {
+    public void selectionTest5() {
         String[] playlist = {"tinydancer", "downtletthesungodownonme", "yoursong", "saturday",
-                "bennyandthejets", "crocodilerock", "flashgordontheme"};
+                "bennyandthejets", "crocodilerock"};
         Music music = new Music(playlist);
         Integer startingIndex = 5;
         String selection = "tinydancer";
-        Integer expected = 2;
+        Integer expected = 1;
         Integer actual = music.selection(startingIndex, selection);
         Assert.assertEquals(expected, actual);
     }

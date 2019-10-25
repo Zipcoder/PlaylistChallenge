@@ -13,7 +13,7 @@ public class Music {
         int clickDown = 0;
 
         //move forward through the array
-        for(int i = startIndex ; i <= playList.length - 1; i++){
+        for(int i = startIndex ; i <= playList.length; i++){
 
             if(playList[i].equals(selection)){
                 break;
@@ -23,7 +23,7 @@ public class Music {
                 start at the other end and keep on counting, bewaring of an infinite loop
              */
             if (i == (playList.length - 1)) {
-                i = 0;
+                i = -1;
             }
         }
 
@@ -35,7 +35,7 @@ public class Music {
             }
             clickDown++;
             if (j == 0) {
-                j = playList.length - 1;
+                j = playList.length;
             }
         }
 
