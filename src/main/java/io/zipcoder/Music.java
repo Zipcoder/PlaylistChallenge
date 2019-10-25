@@ -13,7 +13,8 @@ public class Music {
         int clickDown = 0;
 
         //move forward through the array
-        for(int i = startIndex ; i <= playList.length; i++){
+        for(int i = startIndex ; i <= playList.length - 1; i++){
+
             if(playList[i].equals(selection)){
                 break;
             }
@@ -27,13 +28,14 @@ public class Music {
         }
 
         //move backwards through the array
-        for(int i = startIndex; i >= 0 ; i--){
-            if(playList[i].equals(selection)){
+        for(int j = startIndex; j >= 0 ; j--){
+
+            if(playList[j].equals(selection)){
                 break;
             }
             clickDown++;
-            if (i == 0) {
-                i = playList.length - 1;
+            if (j == 0) {
+                j = playList.length - 1;
             }
         }
 
