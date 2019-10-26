@@ -9,6 +9,15 @@ public class Music {
     }
 
     public Integer selection(Integer startIndex, String selection){
-        return null;
+        int numberOfClicks = 0;
+        for (int currentIndex = startIndex; currentIndex < playList.length; currentIndex++) {
+            String currentSong = playList[currentIndex];
+            if(currentSong.equals(selection)){
+                break;
+            }
+            numberOfClicks++;
+
+        }
+        return numberOfClicks;
     }
 }
