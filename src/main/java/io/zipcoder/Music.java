@@ -9,6 +9,24 @@ public class Music {
     }
 
     public Integer selection(Integer startIndex, String selection){
-        return null;
+        int forwardCount = 0;
+        int backwardCount = 0;
+        for (int currentIndex = 0; currentIndex <= startIndex ; currentIndex++) {
+            forwardCount++;
+            if (playList[currentIndex].equals(selection)) {
+                break;
+            }
+        }
+        for (int currentIndex = startIndex; currentIndex < playList.length; currentIndex++) {
+            backwardCount++;
+            if (playList[currentIndex].equals(selection)) {
+                break;
+            }
+        }
+        if (forwardCount > backwardCount) {
+            return backwardCount;
+        } else {
+            return forwardCount;
+        }
     }
 }
