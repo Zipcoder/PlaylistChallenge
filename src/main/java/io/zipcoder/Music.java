@@ -14,39 +14,40 @@ public class Music {
 
     public Integer selection(Integer startIndex, String selection) {
 
+
+
         int fwdCount = 0;
         int bwdCount = 0;
 
-//        int newSongIndex = ArrayUtils.indexOf(playList, selection);
-//
-//        if (newSongIndex > startIndex)
-//        {
-//
-//        }
+        int newSongIndex = ArrayUtils.indexOf(playList, selection);
+
+        if (newSongIndex > startIndex)
+        {
+
+        }
 
 
-        for (int i = startIndex; i < startIndex + playList.length; i++) {
+        for (int i = startIndex; i < playList.length; i++) {
 
-            if (playList[i].equals(selection)) {
-                break;
-            }
+            if (playList[i].equals(selection))
+                {break;}
+
             fwdCount++;
+
             if(i == (playList.length-1))
             {
-                i = -1;
+                i = -1;   //because we have to include another click to go from the end to the beginning
             }
-            return fwdCount;
-
         }
 
         for (int j = startIndex; j >= 0; j--) {
             if (playList[j].equals(selection)) {
                 break;}
-                bwdCount++;
+             bwdCount++;
              if (j == 0) {
-                j = playList.length - 1;
+                j = playList.length;  //because we have to do another click from the beginning back to the end.
             }
-            return bwdCount;
+
         }
 
         if (bwdCount < fwdCount) {
