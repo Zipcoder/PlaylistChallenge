@@ -9,6 +9,24 @@ public class Music {
     }
 
     public Integer selection(Integer startIndex, String selection){
-        return null;
+
+        Integer minDist = playList.length;
+        for(int i = 0; i < playList.length; i++){
+            if(selection.equals(playList[i])){
+                if(Math.abs(startIndex - i) < minDist){
+                    minDist = Math.abs(startIndex - i);
+                }
+                if((playList.length - Math.abs(startIndex - i)) < minDist){
+                    minDist = playList.length - Math.abs(startIndex - i);
+                }
+
+            }
+        }
+        if(minDist == playList.length){   // song is not in playList
+            return -1;
+        }
+
+
+        return minDist;
     }
 }
